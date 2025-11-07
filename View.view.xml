@@ -1,0 +1,23 @@
+<mvc:View xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          width="100%"
+          controllerName="com.winslow.Activities.Card">
+        <List
+				class="sapUiTinyMarginBottom"
+				showSeparators="None"
+				items="{
+					path: 'oJsonModel>/json'
+				}">
+				<CustomListItem>
+						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTop" >
+							<Text text="{oJsonModel>date}" />
+							<Title level="H3" text="{oJsonModel>title}" />
+							<Text text="{oJsonModel>description}"></Text>
+                            <Text text="-----------------------------------------------"></Text>
+						</VBox>
+				</CustomListItem>
+		</List>
+        <Link class="sapUiSmallMarginBegin sapUiTinyMargin" text="VIEW ALL ACTIVITY"></Link>
+</mvc:View>

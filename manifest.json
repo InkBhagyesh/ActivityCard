@@ -1,0 +1,107 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "com.winslow.Activities",
+		"type": "card",
+		"title": "Activities",
+		"subTitle": "",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"phone": true,
+			"tablet": true
+		},
+		"icons": {
+			"icon": "sap-icon://bus-public-transport"
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.winslow.Activities.View",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.38",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"config": {
+			"sample": {
+				"stretch": true,
+				"files": [
+					"Card.controller.js"
+				]
+			}
+		}
+	},
+	"sap.card": {
+		"type": "Component",
+		"designtime": "dt/configuration",
+		"header": {
+			"icon": {
+				"src": "sap-icon://bus-public-transport"
+			},
+			"title": "Buy your bus ticket online",
+			"subTitle": "You’ll receive an email with a QR code. No need to print!",
+			"visible":false
+		},
+		"configuration": {
+			"css": {
+				".activityBox": {
+					"padding": "10px",
+					"font-family": "Arial, sans-serif"
+				},
+				".activityHeader": {
+					"color": "#F5A623",
+					"font-weight": "bold",
+					"font-size": "16px",
+					"margin-bottom": "10px"
+				},
+				".activityItem": {
+					"border-bottom": "1px dotted #000",
+					"margin-bottom": "10px",
+					"padding-bottom": "10px"
+				},
+				".activityDate": {
+					"color": "#000",
+					"font-size": "12px",
+					"font-weight": "normal"
+				},
+				".activityTitle": {
+					"color": "#000",
+					"font-weight": "bold",
+					"margin-top": "3px"
+				},
+				".activityText": {
+					"color": "#000",
+					"font-weight": "normal"
+				},
+				".activityLink": {
+					"color": "#F5A623",
+					"font-weight": "bold"
+				},
+				".activityFooter": {
+					"justify-content": "flex-end",
+					"display": "flex",
+					"margin-top": "10px"
+				},
+				".footerLink": {
+					"color": "#F5A623",
+					"font-weight": "bold",
+					"text-decoration": "none"
+				}
+			}
+		}
+	},
+	"sap.platform.mobilecards": {
+		"compatible": true
+	}
+}
