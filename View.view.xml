@@ -1,23 +1,39 @@
-<mvc:View xmlns:core="sap.ui.core"
-          xmlns:mvc="sap.ui.core.mvc"
-          xmlns="sap.m"
-          xmlns:html="http://www.w3.org/1999/xhtml"
-          width="100%"
-          controllerName="com.winslow.Activities.Card">
-        <List
-				class="sapUiTinyMarginBottom"
-				showSeparators="None"
-				items="{
-					path: 'oJsonModel>/json'
-				}">
-				<CustomListItem>
-						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTop" >
-							<Text text="{oJsonModel>date}" />
-							<Title level="H3" text="{oJsonModel>title}" />
-							<Text text="{oJsonModel>description}"></Text>
-                            <Text text="-----------------------------------------------"></Text>
-						</VBox>
-				</CustomListItem>
-		</List>
-        <Link class="sapUiSmallMarginBegin sapUiTinyMargin" text="VIEW ALL ACTIVITY"></Link>
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    width="100%"
+    controllerName="com.winslow.Activities.Card"
+    busyIndicatorDelay="0"
+>
+    <List
+        class="sapUiTinyMargin"
+        showSeparators="None"
+        items="{LocalModel>/}"
+    >
+        <CustomListItem press="handleFilePress">
+            <VBox>
+                <Text
+                    text="{path: 'LocalModel>date', formatter: '.Formatter.formatDate' }"
+                />
+                <Title
+                    level="H3"
+                    text="{LocalModel>name}"
+                    wrapping="true"
+                    wrappingType="Hyphenated"
+                />
+                <Text
+                    text="{path: 'LocalModel>mime', formatter: '.Formatter.doctypetext' }"
+                />
+                <Text
+                    text="-----------------------------------------------------------------"
+                />
+            </VBox>
+        </CustomListItem>
+    </List>
+    <Link
+        class="sapUiSmallMarginBegin sapUiTinyMargin"
+        text="VIEW ALL ACTIVITY"
+        press="onPressLink"
+    />
 </mvc:View>
