@@ -7,29 +7,61 @@
     busyIndicatorDelay="0"
 >
     <List
-        class="sapUiTinyMargin"
-        showSeparators="None"
+        showSeparators="All"
         items="{LocalModel>/}"
+        width="auto"
     >
-        <CustomListItem press="handleFilePress">
-            <VBox>
+        <headerToolbar>
+            <OverflowToolbar>
+                <Title
+                    text="Activities"
+                    class="customListTitle"
+                    level="H1"
+                />
+            </OverflowToolbar>
+        </headerToolbar>
+        <CustomListItem>
+            <VBox class="sapUiTinyMarginTopBottom sapUiSmallMarginBeginEnd">
                 <Text
                     text="{path: 'LocalModel>date', formatter: '.Formatter.formatDate' }"
                 />
-                <Title
-                    level="H3"
+                <Link
+                    class="customListLink"
+                    press="handleFilePress"
                     text="{LocalModel>name}"
                     wrapping="true"
-                    wrappingType="Hyphenated"
                 />
                 <Text
-                    text="{path: 'LocalModel>mime', formatter: '.Formatter.doctypetext' }"
-                />
-                <Text
-                    text="-----------------------------------------------------------------"
+                    text="{LocalModel>description}"
+                    visible="{= !!${LocalModel>description}}"
+                    wrapping="true"
                 />
             </VBox>
+            <!-- <HBox
+                alignItems="Center"
+                renderType="Bare"
+            >
+                <core:Icon
+                    size="2rem"
+                    class="sapUiTinyMarginBeginEnd"
+                    src="{path: 'LocalModel>mime', formatter: '.Formatter.doctypeicon' }"
+                />
+                
+            </HBox> -->
         </CustomListItem>
+        <!-- <items>
+            <StandardListItem
+                title="{LocalModel>name}"
+                description="{LocalModel>description}"
+                info="{path: 'LocalModel>date', formatter: '.Formatter.formatDate' }"
+                icon="{path: 'LocalModel>mime', formatter: '.Formatter.doctypeicon' }"
+                iconInset="false"
+                infoTextDirection="Inherit"
+                type="Active"
+                press=".handleFilePress"
+                wrapping="true"
+            />
+        </items> -->
     </List>
     <Link
         class="sapUiSmallMarginBegin sapUiTinyMargin"

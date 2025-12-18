@@ -9,6 +9,30 @@ sap.ui.define([
 
 	return Controller.extend("com.winslow.Activities.Card", {
 		Formatter: Formatter,
+		onInit: function () {
+			debugger;
+			// Read URL parameters
+			var oParams = new URLSearchParams(window.location.search);
+			var sTitle = oParams.get("title"); // Holiday
+			// Set visibility based on Title
+			var oModel = new sap.ui.model.json.JSONModel({ BTN: sTitle === "Holiday" });
+			this.getView().setModel(oModel, "oVisibleModel");
+
+			this.getView().setBusy(true);
+			this.getView().attachModelContextChange(this._onModelArrival, this);
+            this._onModelArrival();
+		},
+
+		_onModelArrival: function () {
+            var oODataModel = this.getOwnerComponent().getModel();
+            if (oODataModel) {
+                this.getView().detachModelContextChange(this._onModelArrival, this);
+                oODataModel.metadataLoaded().then(function () {
+                    this._loadData();
+                }.bind(this));
+            }
+        },
+
 		onAfterRendering: function () {
 			const oView = this.getView();
 			oView.setBusy(true);
@@ -26,6 +50,7 @@ sap.ui.define([
 				success: function (oData) {
 					try {
 						var res = JSON.parse(oData.OTFilesByDateRange);
+						debugger
 						this.getOwnerComponent().setModel(new JSONModel(res.files || []), "LocalModel");
 					} catch (e) {
 						console.error("JSON Parse Error", e);
@@ -44,6 +69,10 @@ sap.ui.define([
 			var oContext = oEvent.getSource().getBindingContext("LocalModel");
 			var sUrl = oContext.getProperty("url");
 			if (sUrl) sap.m.URLHelper.redirect(sUrl, true);
+		},
+
+		onPressLink: function () {
+			window.location.href = window.location.origin + "/groups/x350lY89aebGNVSR7in01k/workpage_tabs/qPcHAd1mK0LqVvIsnPF01k?headless=true"
 		}
 	});
 });
