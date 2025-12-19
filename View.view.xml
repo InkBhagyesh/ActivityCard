@@ -7,9 +7,9 @@
     busyIndicatorDelay="0"
 >
     <List
-        showSeparators="All"
         items="{LocalModel>/}"
         width="auto"
+        showSeparators="None"
     >
         <headerToolbar>
             <OverflowToolbar>
@@ -21,9 +21,14 @@
             </OverflowToolbar>
         </headerToolbar>
         <CustomListItem>
-            <VBox class="sapUiTinyMarginTopBottom sapUiSmallMarginBeginEnd">
+            <VBox
+                width="auto"
+                class="holidayItem sapUiSmallMarginBeginEnd"
+            >
                 <Text
-                    text="{path: 'LocalModel>date', formatter: '.Formatter.formatDate' }"
+                    text="{ path: 'LocalModel>date', formatter: '.Formatter.formatTopDate' }"
+                    class="holidayDate"
+                    wrapping="true"
                 />
                 <Link
                     class="customListLink"
@@ -34,8 +39,12 @@
                 <Text
                     text="{LocalModel>description}"
                     visible="{= !!${LocalModel>description}}"
+                    class="holidaySubText"
                     wrapping="true"
                 />
+                <HBox class="holidayDivider">
+                    <VBox class="dividerLine" />
+                </HBox>
             </VBox>
             <!-- <HBox
                 alignItems="Center"

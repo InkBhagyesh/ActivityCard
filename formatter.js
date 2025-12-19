@@ -61,6 +61,17 @@ sap.ui.define([
 
         formatDate: function (oDate) {
             return new Date(oDate).toLocaleDateString();
-        }
+        },
+
+		formatTopDate: function (sDate) {
+			if (!sDate) return "";
+
+			var oDate = new Date(sDate);
+			return oDate.toLocaleDateString("en-GB", {
+				day: "numeric",
+				month: "long",
+				year: "numeric"
+			}).toUpperCase();
+		},
     }
 });
