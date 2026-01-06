@@ -8,6 +8,12 @@ sap.ui.define(['sap/ui/core/UIComponent', 'sap/ui/model/odata/v2/ODataModel'],
 				manifest: "json"
 			},
 			onCardReady: function (oCard) {
+				var oParams = oCard.getManifestEntry("sap.card").configuration.parameters;
+				var oCardModel = new sap.ui.model.json.JSONModel({
+					ActivityPath: oParams?.ActivityPath?.value || ""
+				});
+				this.setModel(oCardModel, "cardData");
+
 				oCard.resolveDestination("JAM").then(function (sResolvedUrl) {
 					if (sResolvedUrl.endsWith("/")) { sResolvedUrl = sResolvedUrl.slice(0, -1); }
 					var sServiceUrl = sResolvedUrl + "/api/v1/OData/";

@@ -9,6 +9,10 @@ sap.ui.define(["sap/ui/integration/Designtime"], function (
         return new Designtime({
             form: {
                 items: {
+                    ActivityPath: {
+                        manifestpath: "/sap.card/configuration/parameters/ActivityPath/value",
+                        label: "Activity Path"
+                    }
                 }
             },
             preview: {

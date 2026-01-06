@@ -72,7 +72,8 @@ sap.ui.define([
 		},
 
 		onPressLink: function () {
-			window.location.href = window.location.origin + "/groups/x350lY89aebGNVSR7in01k/workpage_tabs/qPcHAd1mK0LqVvIsnPF01k?headless=true"
+			const path = this.getOwnerComponent().getModel("cardData").getProperty("/ActivityPath");
+			window.location.href = window.location.origin + path + "?headless=true"
 		}
 	});
 });
