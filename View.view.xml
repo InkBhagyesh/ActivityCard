@@ -76,5 +76,6 @@
         class="sapUiSmallMarginBegin sapUiTinyMargin"
         text="VIEW ALL ACTIVITY"
         press="onPressLink"
+        visible="{= ${LocalModel>/}.length > 0 }"
     />
 </mvc:View>
