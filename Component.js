@@ -32,7 +32,7 @@ sap.ui.define(['sap/ui/core/UIComponent', 'sap/ui/model/odata/v2/ODataModel'],
 					console.error("Destination Resolution Failed", sError);
 				});
 
-				oCard.resolveDestination("BMSPortal_API").then(function (sResolvedUrl) {
+				oCard.resolveDestination("BMSPortal_Testing").then(function (sResolvedUrl) {
 					if (sResolvedUrl.endsWith("/")) { sResolvedUrl = sResolvedUrl.slice(0, -1); }
 					var sServiceUrl = sResolvedUrl + "/v2/odata/v4/main/";
 					var oModel = new ODataModel(sServiceUrl, {

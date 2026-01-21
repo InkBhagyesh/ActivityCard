@@ -33,7 +33,7 @@ sap.ui.define([
             }
         },
 
-		onAfterRendering: function () {
+		_loadData: function () {
 			const oView = this.getView();
 			oView.setBusy(true);
 			var oDateFormat = DateFormat.getInstance({ pattern: "yyyy-MM-dd" });
@@ -48,6 +48,7 @@ sap.ui.define([
 					top: 5
 				},
 				success: function (oData) {
+					debugger
 					try {
 						var res = JSON.parse(oData.OTFilesByDateRange);
 						debugger
